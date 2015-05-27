@@ -16,7 +16,7 @@
 #include "rpcconsole.h"
 #include "scicon.h"
 #include "utilitydialog.h"
-
+#include "chatwindow.h"
 #ifdef ENABLE_WALLET
 #include "walletframe.h"
 #include "walletmodel.h"
@@ -282,6 +282,14 @@ void BitcoinGUI::createActions(const NetworkStyle *networkStyle)
     historyAction->setCheckable(true);
     historyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_4));
     tabGroup->addAction(historyAction);
+    
+    chatAction = new QAction(SingleColorIcon(":/icons/eye"), tr("&Chat"), this);
+    chatAction->setStatusTip(tr("IRC chat"));
+    //chatAction->setToolTip(historyAction->statusTip());
+    chatAction->setCheckable(true);
+    chatAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
+    tabGroup->addAction(chatAction);
+    
 
 #ifdef ENABLE_WALLET
     // These showNormalIfMinimized are needed because Send Coins and Receive Coins
@@ -298,6 +306,7 @@ void BitcoinGUI::createActions(const NetworkStyle *networkStyle)
     connect(receiveCoinsMenuAction, SIGNAL(triggered()), this, SLOT(gotoReceiveCoinsPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
+    connect(chatAction, SIGNAL(triggered()), this, SLOT(gotoChatPage()));
 #endif // ENABLE_WALLET
 
     quitAction = new QAction(TextColorIcon(":/icons/quit"), tr("E&xit"), this);
@@ -418,6 +427,7 @@ void BitcoinGUI::createToolBars()
         toolbar->addAction(sendCoinsAction);
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
+        toolbar->addAction(chatAction);
         overviewAction->setChecked(true);
     }
 }
@@ -504,6 +514,7 @@ void BitcoinGUI::setWalletActionsEnabled(bool enabled)
     usedSendingAddressesAction->setEnabled(enabled);
     usedReceivingAddressesAction->setEnabled(enabled);
     openAction->setEnabled(enabled);
+    chatAction->setEnabled(enabled);
 }
 
 void BitcoinGUI::createTrayIcon(const NetworkStyle *networkStyle)
@@ -612,6 +623,12 @@ void BitcoinGUI::gotoHistoryPage()
 {
     historyAction->setChecked(true);
     if (walletFrame) walletFrame->gotoHistoryPage();
+}
+
+void BitcoinGUI::gotoChatPage()
+{
+    chatAction->setChecked(true);
+    if (walletFrame) walletFrame->gotoChatPage();
 }
 
 void BitcoinGUI::gotoReceiveCoinsPage()

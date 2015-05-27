@@ -10,11 +10,11 @@ SetCompressor /SOLID lzma
 !define URL http://www.bitcoin.org/
 
 # MUI Symbol Definitions
-!define MUI_ICON "/home/bryce/unobtanium/share/pixmaps/bitcoin.ico"
-!define MUI_WELCOMEFINISHPAGE_BITMAP "/home/bryce/unobtanium/share/pixmaps/nsis-wizard.bmp"
+!define MUI_ICON "/home/stu/Desktop/Unobtanium/share/pixmaps/bitcoin.ico"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "/home/stu/Desktop/Unobtanium/share/pixmaps/nsis-wizard.bmp"
 !define MUI_HEADERIMAGE
 !define MUI_HEADERIMAGE_RIGHT
-!define MUI_HEADERIMAGE_BITMAP "/home/bryce/unobtanium/share/pixmaps/nsis-header.bmp"
+!define MUI_HEADERIMAGE_BITMAP "/home/stu/Desktop/Unobtanium/share/pixmaps/nsis-header.bmp"
 !define MUI_FINISHPAGE_NOAUTOCLOSE
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT HKLM
 !define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
@@ -22,7 +22,7 @@ SetCompressor /SOLID lzma
 !define MUI_STARTMENUPAGE_DEFAULTFOLDER "Unobtanium Core"
 !define MUI_FINISHPAGE_RUN $INSTDIR\bitcoin-qt.exe
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
-!define MUI_UNWELCOMEFINISHPAGE_BITMAP "/home/bryce/unobtanium/share/pixmaps/nsis-wizard.bmp"
+!define MUI_UNWELCOMEFINISHPAGE_BITMAP "/home/stu/Desktop/Unobtanium/share/pixmaps/nsis-wizard.bmp"
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
 
 # Included files
@@ -48,7 +48,7 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile /home/bryce/unobtanium/bitcoin-${VERSION}-win-setup.exe
+OutFile /home/stu/Desktop/Unobtanium/bitcoin-${VERSION}-win-setup.exe
 !if "" == "64"
 InstallDir $PROGRAMFILES64\Bitcoin
 !else
@@ -73,14 +73,14 @@ ShowUninstDetails show
 Section -Main SEC0000
     SetOutPath $INSTDIR
     SetOverwrite on
-    File /home/bryce/unobtanium/release/bitcoin-qt.exe
-    File /oname=COPYING.txt /home/bryce/unobtanium/COPYING
-    File /oname=readme.txt /home/bryce/unobtanium/doc/README_windows.txt
+    File /home/stu/Desktop/Unobtanium/release/bitcoin-qt.exe
+    File /oname=COPYING.txt /home/stu/Desktop/Unobtanium/COPYING
+    File /oname=readme.txt /home/stu/Desktop/Unobtanium/doc/README_windows.txt
     SetOutPath $INSTDIR\daemon
-    File /home/bryce/unobtanium/release/bitcoind.exe
-    File /home/bryce/unobtanium/release/bitcoin-cli.exe
+    File /home/stu/Desktop/Unobtanium/release/bitcoind.exe
+    File /home/stu/Desktop/Unobtanium/release/bitcoin-cli.exe
     SetOutPath $INSTDIR\doc
-    File /r /home/bryce/unobtanium/doc\*.*
+    File /r /home/stu/Desktop/Unobtanium/doc\*.*
     SetOutPath $INSTDIR
     WriteRegStr HKCU "${REGKEY}\Components" Main 1
 

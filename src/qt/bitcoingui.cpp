@@ -283,7 +283,7 @@ void BitcoinGUI::createActions(const NetworkStyle *networkStyle)
     historyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_4));
     tabGroup->addAction(historyAction);
     
-    chatAction = new QAction(SingleColorIcon(":/icons/eye"), tr("&Chat"), this);
+    chatAction = new QAction(SingleColorIcon(":/icons/chat"), tr("&Chat"), this);
     chatAction->setStatusTip(tr("IRC chat"));
     //chatAction->setToolTip(historyAction->statusTip());
     chatAction->setCheckable(true);
